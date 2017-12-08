@@ -1,0 +1,3 @@
+interface ServerError {
+    message: string;
+}

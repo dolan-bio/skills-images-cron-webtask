@@ -1,0 +1,43 @@
+{
+  "name": "skills-images-cron-webtask",
+  "version": "1.0.0",
+  "description": "Fetch images from a cron job",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint --project .",
+    "tsc": "rimraf dist && tsc --p .",
+    "deploy": "wt create dist/index.js -p \"app63474144-eu\" -b",
+    "build": "npm run tsc && copyfiles package.json dist",
+    "spell": "cspell \"src/**/!(*.wav|*.mp3).*\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dolanmiu@bitbucket.org/bulletfight/pubmed-fetcher.git"
+  },
+  "author": "Dolan Miu",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/bulletfight/pubmed-fetcher#readme",
+  "devDependencies": {
+    "copyfiles": "^1.2.0",
+    "rimraf": "^2.6.2",
+    "tslint": "~5.8.0",
+    "typescript": "2.6.2",
+    "wt-cli": "^8.2.0"
+  },
+  "dependencies": {
+    "@types/mongoose": "^4.7.28",
+    "@types/request": "^2.0.8",
+    "@types/request-promise": "^4.1.39",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "google-images": "2.1.0",
+    "mongoose": "^4.13.5",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "winston": "^2.3.1"
+  }
+}
