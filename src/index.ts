@@ -15,8 +15,6 @@ module.exports = async (context, cb) => {
     try {
         const images = await action.run();
         cb(null, images);
-
-        console.log(images);
     } catch (err) {
         console.error(err);
         const errorResponse: ServerError = {

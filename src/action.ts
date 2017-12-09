@@ -12,15 +12,11 @@ export class SkillAction {
 
     public async run(): Promise<void> {
         const skills = await Skill.find();
-        console.log(skills);
 
         for (const skill of skills) {
             const image = await this.imageFetcher.findImage(skill.name);
 
-            console.log(image.url);
-
             if (!image.url) {
-                console.log(image);
                 continue;
             }
 
