@@ -27,6 +27,7 @@
     "wt-cli": "^8.2.0"
   },
   "dependencies": {
+    "@types/google-images": "^2.1.0",
     "@types/mongoose": "^4.7.28",
     "@types/request": "^2.0.8",
     "@types/request-promise": "^4.1.39",
