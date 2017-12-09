@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint --project .",
     "tsc": "rimraf dist && tsc --p .",
-    "deploy": "wt create dist/index.js -p \"app63474144-eu\" -b",
+    "deploy": "wt update skills-images-cron-webtask dist/index.js -p \"app63474144-eu\" -b",
     "build": "npm run tsc && copyfiles package.json dist",
     "local": "wt serve dist/index.js --hostname localhost --port 1234",
     "spell": "cspell \"src/**/!(*.wav|*.mp3).*\""
