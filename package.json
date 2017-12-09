@@ -9,6 +9,7 @@
     "tsc": "rimraf dist && tsc --p .",
     "deploy": "wt create dist/index.js -p \"app63474144-eu\" -b",
     "build": "npm run tsc && copyfiles package.json dist",
+    "local": "wt serve dist/index.js --hostname localhost --port 1234",
     "spell": "cspell \"src/**/!(*.wav|*.mp3).*\""
   },
   "repository": {
@@ -37,7 +38,6 @@
     "google-images": "2.1.0",
     "mongoose": "^4.13.5",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "winston": "^2.3.1"
+    "request-promise": "^4.2.2"
   }
 }
