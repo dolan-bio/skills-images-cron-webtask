@@ -14,6 +14,6 @@ export class ImageFetcher {
 
         const filteredImages = images.filter((i) => i.url.endsWith(".png"));
 
-        return filteredImages;
+        return filteredImages[0];
     }
 }

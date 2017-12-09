@@ -1,13 +1,12 @@
 import "babel-polyfill";
 import * as mongoose from "mongoose";
-import * as logger from "winston";
 
 import { SkillAction } from "./action";
 
 module.exports = async (context, cb) => {
     mongoose.connect(context.secrets.MONGODB_URI);
 
-    logger.debug("Getting skills");
+    console.log("Getting skills");
     const action = new SkillAction({
         customSearchEngineId: context.secrets.CSE_ID,
         apiKey: context.secrets.API_KEY,
@@ -17,9 +16,9 @@ module.exports = async (context, cb) => {
         const images = await action.run();
         cb(null, images);
 
-        logger.info(images);
+        console.log(images);
     } catch (err) {
-        logger.error(err);
+        console.error(err);
         const errorResponse: ServerError = {
             message: "Something went wrong with the server",
         };

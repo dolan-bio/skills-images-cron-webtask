@@ -3,11 +3,6 @@ import * as request from "request-promise";
 import { ImageFetcher } from "./image-fetcher";
 import { Skill } from "./skill-model";
 
-interface ISkillCombinedResult {
-    image: string;
-    name: string;
-}
-
 export class SkillAction {
     private imageFetcher: ImageFetcher;
 
@@ -15,12 +10,19 @@ export class SkillAction {
         this.imageFetcher = new ImageFetcher(config);
     }
 
-    public async run(): Promise<ISkillCombinedResult[]> {
+    public async run(): Promise<void> {
         const skills = await Skill.find();
+        console.log(skills);
 
-        const images: ISkillCombinedResult[] = [];
         for (const skill of skills) {
             const image = await this.imageFetcher.findImage(skill.name);
+
+            console.log(image.url);
+
+            if (!image.url) {
+                console.log(image);
+                continue;
+            }
 
             const response = await request.get({
                 url: image.url,
@@ -33,12 +35,8 @@ export class SkillAction {
             const base64 = response.body.toString("base64");
             const base64Prefix = prefix + base64;
 
-            images.push({
-                image: base64Prefix,
-                name: skill.name,
-            });
+            skill.image = base64Prefix;
+            await skill.save();
         }
-
-        return images;
     }
 }
