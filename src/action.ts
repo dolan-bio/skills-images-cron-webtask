@@ -11,10 +11,12 @@ export class SkillAction {
     }
 
     public async run(): Promise<void> {
-        const skills = await Skill.find();
+        const skills = await Skill.find({}, "name");
 
         for (const skill of skills) {
             const image = await this.imageFetcher.findImage(skill.name);
+
+            console.log(image.url);
 
             if (!image.url) {
                 continue;
@@ -32,6 +34,7 @@ export class SkillAction {
             const base64Prefix = prefix + base64;
 
             skill.image = base64Prefix;
+            console.log(`Saving ${skill.name}`);
             await skill.save();
         }
     }
